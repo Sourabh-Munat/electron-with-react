@@ -2,20 +2,47 @@
   "name": "myapp",
   "version": "0.1.0",
   "private": true,
+  "main": "public/start.js",
+  "homepage": "./",
+  "repository": "https://github.com/Sourabh-Munat",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.3",
+    "electron-is-dev": "^1.2.0",
+    "electron-window-state": "^5.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set BROWSER=none && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "electron": "nodemon --exec electron .",
+    "buildWin": "electron-builder -w"
+  },
+  "build": {
+    "appId": "com.sourabh-munat.myapp",
+    "copyright": "sourabhMunat",
+    "extends": null,
+    "directories": {
+      "buildResources": "assets"
+    },
+    "publish": {
+      "provider": "github"
+    },
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "verifyUpdateCodeSignature": false,
+      "publisherName": "SourabhMunat"
+    },
+    "linux": {
+      "category": "Utility"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +61,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^11.2.1",
+    "electron-builder": "^22.9.1",
+    "nodemon": "^2.0.7"
   }
 }
